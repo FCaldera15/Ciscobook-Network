@@ -12,6 +12,7 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
+      get: (date) => timeSince(date),
     },
     username: {
       type: String,
@@ -20,7 +21,9 @@ const thoughtSchema = new Schema(
     reactions: [Reaction],
   },
   {
+    timestamp: true,
     toJSON: {
+      getters: true,
       virtuals: true,
     },
     id: false,
