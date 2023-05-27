@@ -1,5 +1,4 @@
-const { Thought } = require("../models");
-const User = require("../models/User");
+const { User, Thought } = require("../models");
 
 module.exports = {
     // get all of users
@@ -91,7 +90,7 @@ module.exports = {
         try {
             const deleteFriend = await User.findOneAndUpdate(
                 { _id: req.params.userId },
-                { $push: { friends: req.params.friendId } },
+                { $pull: { friends: req.params.friendId } },
                 { runValidators: true, new: true }
             );
 
