@@ -130,7 +130,7 @@ module.exports = {
             res.json(thought);
         } catch (err) {
             res.status(500).json(err);
-            console.log(err)
+            // console.log(err)
         }
     },
 }
