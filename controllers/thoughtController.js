@@ -120,7 +120,7 @@ module.exports = {
             const thought = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
                 { $pull: { reactions: { reactionId: req.params.reactionId } } },
-                { runValidators: true, new: true }
+                { runValidators: true, new: true },
             );
 
             if (!thought) {
@@ -130,6 +130,7 @@ module.exports = {
             res.json(thought);
         } catch (err) {
             res.status(500).json(err);
+            console.log(err)
         }
     },
 }
